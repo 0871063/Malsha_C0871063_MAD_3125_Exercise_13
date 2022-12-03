@@ -1,18 +1,170 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp">
+
+        <Spinner
+            android:id="@+id/mealSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="20dp"/>
+
+        <EditText
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mealSpinner"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="20dp"
+            android:ems="10"
+            android:enabled="false"
+            android:hint="@string/price"
+            android:inputType="textPersonName"
+            android:text="0" />
+        <TextView
+            android:id="@+id/priceTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_below="@+id/price"
+            android:layout_marginTop="40dp"
+            android:text="@string/quantity" />
+        <SeekBar
+            android:id="@+id/quantitySeekBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_below="@+id/priceTV"
+            android:layout_marginTop="20dp"
+            android:max="10"
+            android:min="0"
+            />
+
+        <TextView
+            android:id="@+id/tipTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/quantitySeekBar"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="20dp"
+            android:text="@string/tip"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <RadioGroup
+            android:id="@+id/tipButtonGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:checkedButton="@+id/tenRadioButton"
+            android:layout_below="@+id/quantitySeekBar"
+            android:layout_marginTop="40dp">
+
+        <RadioButton
+            android:id="@+id/tenRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ten"
+            android:layout_marginTop="20dp"/>
+            <RadioButton
+                android:id="@+id/fifteenRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/fifteen"
+                />
+            <RadioButton
+                android:id="@+id/twentyRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/twenty"
+               />
+        </RadioGroup>
+
+        <EditText
+            android:id="@+id/totalPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tipButtonGroup"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:ems="10"
+            android:hint="@string/totalPrice"
+            android:inputType="textPersonName"
+            android:text="0"
+            android:enabled="false" />
+
+        <ImageView
+            android:id="@+id/mealImage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_below="@+id/totalPrice"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            app:srcCompat="@android:drawable/ic_dialog_alert" />
+
+        <CheckBox
+            android:id="@+id/confirmCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/confirm"
+            android:layout_below="@+id/mealImage"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"/>
+
+        <Button
+            android:id="@+id/order"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/order"
+            android:layout_below="@+id/confirmCheckBox"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true" />
+
+
+    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
