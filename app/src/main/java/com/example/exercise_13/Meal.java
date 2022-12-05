@@ -34,4 +34,10 @@ public class Meal {
     public void setImage(int image) {
         this.image = image;
     }
+
+
+    @Override
+    public String toString() {
+        return getName();
+    }
 }

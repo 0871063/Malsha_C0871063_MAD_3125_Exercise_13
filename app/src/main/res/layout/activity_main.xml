@@ -17,42 +17,86 @@
         android:layout_height="match_parent"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="1dp">
+        <TextView
+            android:id="@+id/titleTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="20dp"
+            android:text="@string/select"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/mealTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/titleTV"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="20dp"
+            android:text="@string/meal"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <Spinner
             android:id="@+id/mealSpinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginEnd="20dp"/>
-
-        <EditText
-            android:id="@+id/price"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_below="@+id/mealTV"/>
+        <TextView
+            android:id="@+id/priceTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/mealSpinner"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="20dp"
+            android:text="@string/price"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/priceET"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/priceTV"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
             android:ems="10"
             android:enabled="false"
             android:hint="@string/price"
             android:inputType="textPersonName"
             android:text="0" />
+
         <TextView
-            android:id="@+id/priceTV"
+            android:id="@+id/quantityTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
-            android:layout_below="@+id/price"
-            android:layout_marginTop="40dp"
-            android:text="@string/quantity" />
-        <SeekBar
+            android:layout_below="@+id/priceET"
+            android:layout_marginTop="30dp"
+            android:text="@string/quantity"
+            android:textStyle="bold"/>
+
+        <androidx.appcompat.widget.AppCompatSeekBar
             android:id="@+id/quantitySeekBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -60,10 +104,14 @@
             android:layout_alignParentEnd="true"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
-            android:layout_below="@+id/priceTV"
+            android:layout_below="@+id/quantityTV"
             android:layout_marginTop="20dp"
             android:max="10"
             android:min="0"
+            android:thumbTint="@color/black"
+            android:indeterminateTint="@color/black"
+            android:progressTint="@color/black"
+            style="@style/Widget.AppCompat.SeekBar.Discrete"
             />
 
         <TextView
@@ -74,7 +122,7 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="30dp"
             android:layout_marginEnd="20dp"
             android:text="@string/tip"
             android:textSize="16sp"
@@ -88,39 +136,60 @@
             android:layout_alignParentEnd="true"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
+            android:orientation="horizontal"
             android:checkedButton="@+id/tenRadioButton"
             android:layout_below="@+id/quantitySeekBar"
             android:layout_marginTop="40dp">
 
-        <RadioButton
-            android:id="@+id/tenRadioButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/ten"
-            android:layout_marginTop="20dp"/>
+            <RadioButton
+                android:id="@+id/tenRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ten"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+            />
             <RadioButton
                 android:id="@+id/fifteenRadioButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/fifteen"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
                 />
             <RadioButton
                 android:id="@+id/twentyRadioButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/twenty"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
                />
         </RadioGroup>
 
-        <EditText
-            android:id="@+id/totalPrice"
+        <TextView
+            android:id="@+id/totalPriceTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tipButtonGroup"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="20dp"
+            android:text="@string/totalPrice"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/totalPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/totalPriceTV"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
             android:ems="10"
             android:hint="@string/totalPrice"
@@ -157,6 +226,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/order"
+            android:enabled="false"
             android:layout_below="@+id/confirmCheckBox"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
