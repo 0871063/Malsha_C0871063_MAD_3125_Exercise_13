@@ -27,8 +27,7 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
 
     private int mealQuantity = 0;
     private double tax = 0.13;
-    private ArrayList<Meal> meals = new ArrayList<>();
-//    ArrayList<String> mealNames = new ArrayList<>();
+
     private Meal selectedMeal ;
 
     private ActivityMainBinding binding;
@@ -56,7 +55,6 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
 //        binding.mealSpinner.setAdapter(ad);
 
         adapter = new MealAdapter(this, android.R.layout.simple_dropdown_item_1line);
-        adapter.meals = meals;
         binding.mealSpinner.setAdapter(adapter);
 
         binding.mealSpinner.setOnItemSelectedListener(this);
@@ -89,6 +87,7 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
                         if (binding.confirmCheckBox.isChecked()) {
                             if (mealQuantity != 0) {
                                 Toast.makeText(this, "Order Placed", Toast.LENGTH_SHORT).show();
+                                clearFields();
                             }else{
                                 Toast.makeText(this, "Please select the meal quantity.", Toast.LENGTH_SHORT).show();
                             }
@@ -125,12 +124,12 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
     }
 
     private void addMeals(){
-        meals.add(new Meal("Fried Chicken",15.5,R.drawable.checken));
-        meals.add(new Meal("Noodles",10.,R.drawable.noodles));
-        meals.add(new Meal("Beef",25.5,R.drawable.beef));
-        meals.add(new Meal("Fried Rice",5.8, R.drawable.rice));
-        meals.add(new Meal("Fries",5.8,R.drawable.frenchfies));
-        meals.add(new Meal("Prawns",5.8,R.drawable.prawns));
+        Meal.meals.add(new Meal("Fried Chicken",15.5,R.drawable.checken));
+        Meal.meals.add(new Meal("Noodles",10.,R.drawable.noodles));
+        Meal.meals.add(new Meal("Beef",25.5,R.drawable.beef));
+        Meal.meals.add(new Meal("Fried Rice",5.8, R.drawable.rice));
+        Meal.meals.add(new Meal("Fries",5.8,R.drawable.frenchfies));
+        Meal.meals.add(new Meal("Prawns",5.8,R.drawable.prawns));
 //        for(Meal meal:meals){
 //            mealNames.add(meal.getName());
 //        }
@@ -145,13 +144,20 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         // On selecting a spinner item
         String item = parent.getItemAtPosition(position).toString();
-        selectedMeal = meals.get(position);
+        selectedMeal = Meal.meals.get(position);
         binding.priceET.setText(String.valueOf(selectedMeal.getPrice()));
         totalPrice();
         binding.mealImage.setImageResource(selectedMeal.getImage());
     }
     public void onNothingSelected(AdapterView<?> arg0) {
         // TODO Auto-generated method stub
+    }
+
+    private void clearFields(){
+        binding.quantitySeekBar.setProgress(0);
+        binding.tenRadioButton.setChecked(true);
+        binding.confirmCheckBox.setChecked(false);
+        binding.mealSpinner.setSelection(0);
     }
 
 }

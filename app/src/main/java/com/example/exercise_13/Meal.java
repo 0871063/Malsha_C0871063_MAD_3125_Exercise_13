@@ -1,5 +1,7 @@
 package com.example.exercise_13;
 
+import java.util.ArrayList;
+
 public class Meal {
     private String name;
     private double price;
@@ -40,4 +42,6 @@ public class Meal {
     public String toString() {
         return getName();
     }
+
+    public static ArrayList<Meal> meals = new ArrayList<>();
 }

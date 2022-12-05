@@ -11,10 +11,7 @@ import androidx.annotation.Nullable;
 
 import com.example.exercise_13.databinding.ItemDropdownBinding;
 
-import java.util.ArrayList;
-
 public class MealAdapter extends ArrayAdapter<Meal> {
-    ArrayList<Meal> meals = new ArrayList<>();
     Context context;
 
     public MealAdapter(@NonNull Context context, int resource) {
@@ -25,12 +22,12 @@ public class MealAdapter extends ArrayAdapter<Meal> {
     @Nullable
     @Override
     public Meal getItem(int position) {
-        return meals.get(position);
+        return Meal.meals.get(position);
     }
 
     @Override
     public int getCount() {
-        return meals.size();
+        return Meal.meals.size();
     }
 
     @NonNull
@@ -38,7 +35,7 @@ public class MealAdapter extends ArrayAdapter<Meal> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         if(convertView == null){
             ItemDropdownBinding binding = ItemDropdownBinding.inflate(LayoutInflater.from(context),parent,false);
-            binding.getRoot().setText(meals.get(position).getName());
+            binding.getRoot().setText(Meal.meals.get(position).getName());
             return binding.getRoot();
         }
         else{
